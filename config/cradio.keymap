@@ -19,10 +19,6 @@
 
 #define L_GAME      7
 
-// Keycaps
-#define EMPTY       &none
-#define PASS        &trans
-
 // Home rows
 #define HRML(k1,k2,k3,k4) &mt LGUI  k1   &mt LALT  k2   &mt LCTRL k3   &mt LSHFT k4
 #define HRMR(k1,k2,k3,k4) &mt RSHFT k1   &mt RCTRL k2   &mt LALT  k3   &mt RGUI  k4
