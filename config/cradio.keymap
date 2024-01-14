@@ -58,14 +58,14 @@
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <150>;
-            bindings = <&kp A>, <&finnish_a>;
+            bindings = <&kp A>, <&kp RA(A)>;
         };
 
         tdo: tap_dance_o {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <150>;
-            bindings = <&kp A>, <&finnish_o>;
+            bindings = <&kp O>, <&kp RA(O)>;
         };
 
         tdc: tap_dance_caps {
