@@ -30,6 +30,9 @@
 #define LT_NUM      &lt L_NUM   BSPC
 #define LT_SYM      &lt L_SYM   ENTER
 
+// Other
+#define POW_TOG &ext_power EP_TOG
+
 &mt {
     retro-tap;
     tapping-term-ms = <100>;
@@ -63,6 +66,13 @@
             #binding-cells = <0>;
             tapping-term-ms = <150>;
             bindings = <&kp A>, <&finnish_o>;
+        };
+
+        tdc: tap_dance_caps {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <150>;
+            bindings = <&caps_word>, <&kp CAPS>;
         };
     };
 
@@ -111,7 +121,7 @@
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
             &none      &none      &none      &none      &none          &kp HOME   &kp LC(C)  &kp UARW   &kp LC(V)  &kp END
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-            &kp LGUI   &kp LALT   &kp LCTRL  &kp LSHFT  &none          &caps_word &kp LARW   &kp DARW   &kp RARW   &none
+            &kp LGUI   &kp LALT   &kp LCTRL  &kp LSHFT  &none          &tdc       &kp LARW   &kp DARW   &kp RARW   &none
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
             &none      &none      &none      &none      &none          &mkp MB4   &PG_DN     &none      &PG_UP     &mkp MB5
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
@@ -137,9 +147,9 @@
         layer_tri_settings {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-            &none      &none      &none      &none      &none          &to L_GAME &none      &none      &none     &sys_reset
+            &none      &none      &none      &none      &none         &tog L_GAME &none     &none      &none     &sys_reset
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-            &kp LGUI   &kp LALT   &kp LCTRL  &kp LSHFT  &none     &ext_power EP_TOG &none    &none      &none     &bootloader
+            &kp LGUI   &kp LALT   &kp LCTRL  &kp LSHFT  &none          POW_TOG    &none    &none      &none     &bootloader
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
             &none     &none     &none    &bt BT_CLR &bt BT_SEL 2       &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
@@ -151,13 +161,13 @@
         layer_numbers {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-            &kp RBKT   &kp 7      &kp 8      &kp 9      &kp LBKT       &none      &none      &none      &none      &none
+            &kp LBKT   &kp 7      &kp 8      &kp 9      &kp RBKT       &none      &none      &none      &none      &none
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
             &kp SEMI   &kp 4      &kp 5      &kp 6      &kp EQUAL      &none      &kp LSHFT  &kp LCTRL  &kp LALT   &kp LGUI
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
             &kp GRAVE  &kp 1      &kp 2      &kp 3      &kp BLSH       &none      &none      &none      &none      &none
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                             &trans     &trans         &trans     &trans
+                                             &kp 0      &kp MINUS      &trans     &trans
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
@@ -165,16 +175,13 @@
         layer_symbols {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│ RESET    │          │          │          │PROFILE 0 │   │          │          │          │          │  RESET   │
-           &sys_reset  &none     &none     &none    &bt BT_SEL 0    &none     &none     &none     &none    &sys_reset
+            &kp LBRC   &kp AMPS   &kp STAR   &kp LPAR   &kp RBRC       &none      &none      &none      &none      &none
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│BOOTLOADER│          │          │          │PROFILE 1 │   │          │          │          │          │BOOTLOADER│
-          &bootloader  &none     &none     &none    &bt BT_SEL 1    &none     &none     &none     &none    &bootloader
+            &kp COLON  &kp DLLR   &kp PRCNT  &kp CARET  &kp PLUS       &none      &kp LSHFT  &kp LCTRL  &kp LALT   &kp LGUI
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│          │          │          │ CLEAR BT │PROFILE 2 │   │          │          │          │          │          │
-            &none     &none     &none    &bt BT_CLR &bt BT_SEL 2    &none     &none     &none     &none     &none
+            &kp TILDE  &kp EXCL   &kp AT     &kp POUND  &kp PIPE       &none      &none      &none      &none      &none
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                             &trans     &trans         &trans     &trans
+                                             &kp LPAR   &kp UNDER      &trans     &trans
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
@@ -182,14 +189,11 @@
         layer_tri_function {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│ RESET    │          │          │          │PROFILE 0 │   │          │          │          │          │  RESET   │
-           &sys_reset  &none     &none     &none    &bt BT_SEL 0    &none     &none     &none     &none    &sys_reset
+            &kp F12    &kp F7     &kp F8     &kp F9     &kp PSCRN      &none      &none      &none      &none      &none
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│BOOTLOADER│          │          │          │PROFILE 1 │   │          │          │          │          │BOOTLOADER│
-          &bootloader  &none     &none     &none    &bt BT_SEL 1    &none     &none     &none     &none    &bootloader
+            &kp F11    &kp F4     &kp F5     &kp F6     &none          &none      &kp LSHFT  &kp LCTRL  &kp LALT   &kp LGUI
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│          │          │          │ CLEAR BT │PROFILE 2 │   │          │          │          │          │          │
-            &none     &none     &none    &bt BT_CLR &bt BT_SEL 2    &none     &none     &none     &none     &none
+            &kp F10    &kp F1     &kp F2     &kp F3     &none          &none      &none      &none      &none      &none
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
                                              &trans     &trans         &trans     &trans
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
@@ -199,16 +203,13 @@
         layer_game {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│ RESET    │          │          │          │PROFILE 0 │   │          │          │          │          │  RESET   │
-           &sys_reset  &none     &none     &none    &bt BT_SEL 0    &none     &none     &none     &none    &sys_reset
+            &kp TAB    &kp Q      &kp X      &kp E      &kp R         &tog L_BASE &kp 1     &kp 2      &kp 3      &kp 4
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│BOOTLOADER│          │          │          │PROFILE 1 │   │          │          │          │          │BOOTLOADER│
-          &bootloader  &none     &none     &none    &bt BT_SEL 1    &none     &none     &none     &none    &bootloader
+            &kp LSHFT  &kp A      &kp W      &kp D      &kp F          &none      &none      &none      &none      &none
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│          │          │          │ CLEAR BT │PROFILE 2 │   │          │          │          │          │          │
-            &none     &none     &none    &bt BT_CLR &bt BT_SEL 2    &none     &none     &none     &none     &none
+            &kp LCTRL  &kp Z      &kp S      &kp C      &kp V          &none      &none      &none      &none      &none
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                             &none     &none         &none     &none
+                                             &kp LALT   &kp SPACE      &none      &none
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
