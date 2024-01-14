@@ -123,7 +123,7 @@
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
             &kp LGUI   &kp LALT   &kp LCTRL  &kp LSHFT  &none          &tdc       &kp LARW   &kp DARW   &kp RARW   &none
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-            &none      &none      &none      &none      &none          &mkp MB4   &PG_DN     &none      &PG_UP     &mkp MB5
+            &none      &none      &none      &none      &none          &mkp MB4   &kp PG_DN  &none      &kp PG_UP  &mkp MB5
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
                                              &trans     &trans         &trans     &trans
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
@@ -147,9 +147,9 @@
         layer_tri_settings {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-            &none      &none      &none      &none      &none         &tog L_GAME &none     &none      &none     &sys_reset
+            &none      &none      &none      &none      &none         &tog L_GAME &none      &none      &none     &sys_reset
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-            &kp LGUI   &kp LALT   &kp LCTRL  &kp LSHFT  &none          POW_TOG    &none    &none      &none     &bootloader
+            &kp LGUI   &kp LALT   &kp LCTRL  &kp LSHFT  &none          POW_TOG    &none      &none      &none     &bootloader
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
             &none     &none     &none    &bt BT_CLR &bt BT_SEL 2       &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
