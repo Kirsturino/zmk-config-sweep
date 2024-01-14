@@ -29,6 +29,15 @@
 #define LT_NUM      &lt L_NUM   BSPC
 #define LT_SYM      &lt L_SYM   ENTER
 
+&mt {
+    retro-tap;
+    tapping-term-ms = <100>;
+};
+
+&lt {
+    tapping-term-ms = <150>;
+};
+
 / {
     behaviors {
         ht: hold_tap {
@@ -39,15 +48,6 @@
             quick-tap-ms = <150>;
             require-prior-idle-ms = <100>;
             bindings = <&kp>, <&kp>;
-        };
-
-        &mt {
-            retro-tap;
-            tapping-term-ms = <100>;
-        };
-
-        &lt {
-            tapping-term-ms = <150>;
         };
 
         tda: tap_dance_a {
