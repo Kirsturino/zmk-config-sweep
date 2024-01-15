@@ -34,44 +34,21 @@
 #define POW_TOG &ext_power EP_TOG
 
 &mt {
-    retro-tap;
-    tapping-term-ms = <100>;
+    flavor = "tap-preferred";
+    tapping-term-ms = <150>;
+    require-prior-idle-ms = <100>;
 };
 
 &lt {
     tapping-term-ms = <150>;
+    quick-tap-ms = <200>;
 };
 
 / {
-    behaviors {
-        ht: hold_tap {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <200>;
-            quick-tap-ms = <150>;
-            require-prior-idle-ms = <100>;
-            bindings = <&kp>, <&kp>;
-        };
-
-        tda: tap_dance_a {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <150>;
-            bindings = <&kp A>, <&kp RA(A)>;
-        };
-
-        tdo: tap_dance_o {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <150>;
-            bindings = <&kp O>, <&kp RA(O)>;
-        };
-
         tdc: tap_dance_caps {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            tapping-term-ms = <150>;
+            tapping-term-ms = <200>;
             bindings = <&caps_word>, <&kp CAPS>;
         };
     };
@@ -81,6 +58,7 @@
 
         combo_esc {
             timeout-ms = <50>;
+            require-prior-idle-ms = <100>;
             key-positions = <0 1>;
             bindings = <&kp ESC>;
         };
@@ -119,11 +97,11 @@
         layer_nav {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-            &none      &none      &none      &none      &none          &kp HOME   &kp LC(C)  &kp UARW   &kp LC(V)  &kp END
+            &none      &none      &none      &none      &none          &kp HOME   &kp LC(C)  &none      &kp LC(V)  &kp END
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-            &kp LGUI   &kp LALT   &kp LCTRL  &kp LSHFT  &none          &tdc       &kp LARW   &kp DARW   &kp RARW   &none
+            &kp LGUI   &kp LALT   &kp LCTRL  &kp LSHFT  &none          &tdc       &kp LARW   &kp UARW   &kp RARW   &none
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-            &none      &none      &none      &none      &none          &mkp MB4   &kp PG_DN  &none      &kp PG_UP  &mkp MB5
+            &none      &none      &none      &none      &none          &mkp MB4   &kp PG_DN  &kp DARW   &kp PG_UP  &mkp MB5
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
                                              &trans     &trans         &trans     &trans
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
@@ -161,13 +139,13 @@
         layer_numbers {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-            &kp LBKT   &kp 7      &kp 8      &kp 9      &kp RBKT       &none      &none      &none      &none      &none
+            &kp LBKT   &kp N7     &kp N8     &kp N9     &kp RBKT       &none      &none      &none      &none      &none
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-            &kp SEMI   &kp 4      &kp 5      &kp 6      &kp EQUAL      &none      &kp LSHFT  &kp LCTRL  &kp LALT   &kp LGUI
+            &kp SEMI   &kp N4     &kp N5     &kp N6     &kp EQUAL      &none      &kp LSHFT  &kp LCTRL  &kp LALT   &kp LGUI
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-            &kp GRAVE  &kp 1      &kp 2      &kp 3      &kp BSLH       &none      &none      &none      &none      &none
+            &kp GRAVE  &kp N1     &kp N2     &kp N3     &kp BSLH       &none      &none      &none      &none      &none
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                             &kp 0      &kp MINUS      &trans     &trans
+                                             &kp N0     &kp MINUS      &trans     &trans
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
@@ -203,7 +181,7 @@
         layer_game {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-            &kp TAB    &kp Q      &kp X      &kp E      &kp R         &tog L_BASE &kp 1     &kp 2      &kp 3      &kp 4
+            &kp TAB    &kp Q      &kp X      &kp E      &kp R         &tog L_GAME &kp 1     &kp 2      &kp 3      &kp 4
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
             &kp LSHFT  &kp A      &kp W      &kp D      &kp F          &none      &none      &none      &none      &none
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
