@@ -45,6 +45,7 @@
 };
 
 / {
+    behaviors {
         tdc: tap_dance_caps {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
