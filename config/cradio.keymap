@@ -40,7 +40,7 @@
 };
 
 &lt {
-    tapping-term-ms = <150>;
+    tapping-term-ms = <200>;
     quick-tap-ms = <150>;
 };
 
@@ -54,6 +54,7 @@
             require-prior-idle-ms = <150>;
             bindings = <&kp>, <&kp>;
         };
+
         tdc: tap_dance_caps {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
@@ -190,7 +191,7 @@
         layer_game {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-            &kp TAB    &kp Q      &kp X      &kp E      &kp R         &tog L_GAME &kp 1     &kp 2      &kp 3      &kp 4
+            &kp TAB    &kp Q      &kp X      &kp E      &kp R         &tog L_GAME &kp 1      &kp 2      &kp 3      &kp 4
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
             &kp LSHFT  &kp A      &kp W      &kp D      &kp F          &none      &none      &none      &none      &none
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
