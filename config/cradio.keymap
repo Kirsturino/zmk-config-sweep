@@ -13,22 +13,22 @@
 #define L_NAV       1
 #define L_MEDIA     2
 #define L_SETTINGS  3
-
 #define L_NUM       4
 #define L_SYM       5
 #define L_FUN       6
-
 #define L_GAME      7
+#define L_BUTTON    8
 
 // Home rows
 #define HRML(k1,k2,k3,k4) &pmt LGUI  k1  &mt LALT  k2   &mt LCTRL k3   &mt LSHFT k4
 #define HRMR(k1,k2,k3,k4) &mt RSHFT k1   &mt RCTRL k2   &mt LALT  k3   &pmt RGUI  k4
 
 // Layer-taps
-#define LT_MEDIA    &lt L_MEDIA TAB
-#define LT_NAV      &lt L_NAV   SPACE
-#define LT_NUM      &lt L_NUM   BSPC
-#define LT_SYM      &lt L_SYM   ENTER
+#define LT_MEDIA    &lt     L_MEDIA     TAB
+#define LT_NAV      &lt     L_NAV       SPACE
+#define LT_NUM      &bdmt   L_NUM       0
+#define LT_SYM      &lt     L_SYM       ENTER
+#define LT_BUT      &pmt    L_BUTTON    Z
 
 // Other
 #define POW_TOG &ext_power EP_TOG
@@ -60,6 +60,22 @@
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&caps_word>, <&kp CAPS>;
+        };
+
+        bd: backspace_delete {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp BSPC>, <&kp DELETE>;
+            mods = <(MOD_RSFT|MOD_LSFT|MOD_LALT|MOD_RALT|MOD_RCTL|MOD_LTCL)>;
+        };
+
+        bdmt: backspace_delete_mod_tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <150>;
+            require-prior-idle-ms = <100>;
+            bindings = <&kp>, <&bd>;
         };
     };
 
@@ -97,7 +113,7 @@
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
             HRML(A,        S,         D,         F)     &kp G          &kp H      HRMR(J,        K,         L,        SQT)
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-            &kp Z     &mt RALT X  &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA &mt RALT DOT &kp FSLH
+            LT_BUT     &mt RALT X &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA &mt RALT DOT &kp FSLH
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
                                              LT_MEDIA   LT_NAV         LT_SYM     LT_NUM
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
@@ -198,6 +214,20 @@
             &kp LCTRL  &kp Z      &kp S      &kp C      &kp V          &none      &none      &none      &none      &none
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
                                              &kp LALT   &kp SPACE      &none      &none
+        //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
+            >;
+        };
+
+        layer_button {
+            bindings = <
+        //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
+            &none      &none      &none      &none      &none          &none      &none      &none      &none      &none
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+            &none      &none      &kp BSPC   &kp DEL    &none          &none      &none      &none      &none      &none
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+            &trans     &kp LC(X)  &kp LC(C)  &kp LC(V)  &kp ENTER       &none      &none      &none      &none      &none
+        //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
+                                             &kp LC(Z)  &kp LC(Y)      &none      &none
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
