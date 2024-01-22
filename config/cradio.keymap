@@ -26,9 +26,9 @@
 // Layer-taps
 #define LT_MEDIA    &lt     L_MEDIA     TAB
 #define LT_NAV      &lt     L_NAV       SPACE
-#define LT_NUM      &bdmt   L_NUM       0
+#define LT_NUM      &bdlt   L_NUM       0
 #define LT_SYM      &lt     L_SYM       ENTER
-#define LT_BUT      &pmt    L_BUTTON    Z
+#define LT_BUT      &plt    L_BUTTON    Z
 
 // Other
 #define POW_TOG &ext_power EP_TOG
@@ -55,6 +55,15 @@
             bindings = <&kp>, <&kp>;
         };
 
+        plt: pinkie_layer_tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <250>;
+            require-prior-idle-ms = <150>;
+            bindings = <&mo>, <&kp>;
+        };
+
         tdc: tap_dance_caps {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
@@ -69,13 +78,13 @@
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
-        bdmt: backspace_delete_mod_tap {
+        bdlt: backspace_delete_layer_tap {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "tap-preferred";
-            tapping-term-ms = <150>;
-            require-prior-idle-ms = <100>;
-            bindings = <&kp>, <&bd>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <150>;
+            bindings = <&mo>, <&bd>;
         };
     };
 
