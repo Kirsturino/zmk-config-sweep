@@ -188,7 +188,7 @@
         layer_symbols {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-            &kp LBRC   &kp AMPS   &kp STAR   &kp LPAR   &kp RBRC       &none      &none      &none      &none      &none
+            &kp LBRC   &kp AMPS   &kp STAR   &kp RPAR   &kp RBRC       &none      &none      &none      &none      &none
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
             &kp COLON  &kp DLLR   &kp PRCNT  &kp CARET  &kp PLUS       &none      &kp LSHFT  &kp LCTRL  &kp LALT   &kp LGUI
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
