@@ -48,7 +48,7 @@
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <250>;
-            require-prior-idle-ms = <150>;
+            require-prior-idle-ms = <100>;
             hold-trigger-key-positions = <RIGHT_SIDE>;
             hold-trigger-on-release;
             bindings = <&kp>, <&kp>;
@@ -59,7 +59,7 @@
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <250>;
-            require-prior-idle-ms = <150>;
+            require-prior-idle-ms = <100>;
             hold-trigger-key-positions = <LEFT_SIDE>;
             hold-trigger-on-release;
             bindings = <&kp>, <&kp>;
@@ -70,7 +70,7 @@
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <160>;
-            require-prior-idle-ms = <150>;
+            require-prior-idle-ms = <100>;
             hold-trigger-key-positions = <RIGHT_SIDE>;
             hold-trigger-on-release;
             bindings = <&kp>, <&kp>;
@@ -81,7 +81,7 @@
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <160>;
-            require-prior-idle-ms = <150>;
+            require-prior-idle-ms = <100>;
             hold-trigger-key-positions = <LEFT_SIDE>;
             hold-trigger-on-release;
             bindings = <&kp>, <&kp>;
@@ -92,7 +92,7 @@
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <250>;
-            require-prior-idle-ms = <150>;
+            require-prior-idle-ms = <100>;
             bindings = <&mo>, <&kp>;
         };
 
@@ -120,13 +120,73 @@
         };
     };
 
+    macros {
+        m_if: if_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp F4 &kp 2>;
+        };
+
+        m_if_else: if_else_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp F4 &kp 3>;
+        };
+
+        m_for: for_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp F4 &kp 5>;
+        };
+
+        m_repeat: repeat_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp F4 &kp 8>;
+        };
+
+        m_with: with_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp F4 &kp 0>;
+        };
+
+        m_while: while_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp F4 &kp 6>;
+        };
+
+        m_reg: region_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp F4 &kp R>;
+        };
+
+        m_nt: next_tab_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =  <&macro_press &kp LCTRL>,
+                        <&macro_tap &kp PG_UP>,
+                        <&macro_release &kp LCTRL>;
+        };
+
+        m_pt: previous_tab_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =  <&macro_press &kp LCTRL>,
+                        <&macro_tap &kp PG_DN>,
+                        <&macro_release &kp LCTRL>;
+        };
+    };
+
     combos {
         compatible = "zmk,combos";
 
         combo_esc {
             timeout-ms = <50>;
             require-prior-idle-ms = <100>;
-            key-positions = <0 1>;
+            key-positions = <1 2>;
             bindings = <&kp ESC>;
         };
     };
@@ -168,7 +228,7 @@
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
             &kp LGUI   &kp LALT   &kp LCTRL  &kp LSHFT  &none          &tdc       &kp LARW   &kp UARW   &kp RARW   &none
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-            &none      &none      &none      &none      &none          &mkp MB4   &kp PG_DN  &kp DARW   &kp PG_UP  &mkp MB5
+            &none      &none      &none      &none      &none          &mkp MB4   &kp PG_UP  &kp DARW   &kp PG_DN  &mkp MB5
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
                                              &trans     &trans         &trans     &trans
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
@@ -276,11 +336,11 @@
         layer_power {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-            &none      &none      &none      &none      &none          &none      &none      &none      &none      &none
+            &none      &m_reg     &m_repeat  &none      &none          &none      &none      &none      &none      &none
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-            &none      &none      &none      &none      &none          &none      &none      &none      &none      &none
+            &m_while   &m_with    &m_for     &m_if_else &m_if          &none      &none      &none      &none      &none          
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-            &none      &none      &none      &none      &none          &none      &none      &none      &none      &none
+            &none      &m_pt      &none      &m_nt      &none          &none      &none      &none      &none      &trans
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
                                              &none      &none          &none      &none
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
