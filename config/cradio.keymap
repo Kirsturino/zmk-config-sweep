@@ -9,7 +9,6 @@
 
 // Layers
 #define L_BASE      0
-
 #define L_NAV       1
 #define L_MEDIA     2
 #define L_SETTINGS  3
@@ -18,6 +17,7 @@
 #define L_FUN       6
 #define L_GAME      7
 #define L_BUTTON    8
+#define L_POWER     9
 
 // Home rows
 #define HRML(k1,k2,k3,k4) &phrmt_l LGUI k1   &hrmt_l LALT  k2   &hrmt_l LCTRL k3   &hrmt_l  LSHFT k4
@@ -29,6 +29,7 @@
 #define LT_NUM      &bdlt   L_NUM       0
 #define LT_SYM      &lt     L_SYM       ENTER
 #define LT_BUT      &plt    L_BUTTON    Z
+#define LT_POWER    &plt    L_POWER     FSLH
 
 // Other
 #define POW_TOG &ext_power EP_TOG
@@ -153,7 +154,7 @@
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
             HRML(A,        S,         D,         F)     &kp G          &kp H      HRMR(J,        K,         L,        SQT)
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-            LT_BUT     &mt RALT X &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA &mt RALT DOT &kp FSLH
+            LT_BUT     &mt RALT X &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA &mt RALT DOT LT_POWER
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
                                              LT_MEDIA   LT_NAV         LT_SYM     LT_NUM
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
@@ -209,7 +210,7 @@
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
             &kp SEMI   &kp N4     &kp N5     &kp N6     &kp EQUAL      &none      &kp LSHFT  &kp LCTRL  &kp LALT   &kp LGUI
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-            &kp GRAVE  &kp N1     &kp N2     &kp N3     &kp BSLH       &none      &none      &none      &none      &none
+            &kp GRAVE  &kp N1     &kp N2     &kp N3     &kp BSLH       &none      &none      &trans     &trans     &none
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
                                              &kp N0     &kp MINUS      &trans     &trans
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
@@ -268,6 +269,20 @@
             &trans     &kp LC(X)  &kp LC(C)  &kp LC(V)  &kp ENTER      &none      &none      &none      &none      &none
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
                                              &kp BSPC   &kp DEL        &none      &none
+        //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
+            >;
+        };
+
+        layer_power {
+            bindings = <
+        //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
+            &none      &none      &none      &none      &none          &none      &none      &none      &none      &none
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+            &none      &none      &none      &none      &none          &none      &none      &none      &none      &none
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+            &none      &none      &none      &none      &none          &none      &none      &none      &none      &none
+        //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
+                                             &none      &none          &none      &none
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
