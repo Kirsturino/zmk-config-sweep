@@ -124,37 +124,37 @@
         m_if: if_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_tap &kp F4 &kp 2>;
+            bindings = <&macro_tap &kp F4 &kp N2>;
         };
 
         m_if_else: if_else_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_tap &kp F4 &kp 3>;
+            bindings = <&macro_tap &kp F4 &kp N3>;
         };
 
         m_for: for_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_tap &kp F4 &kp 5>;
+            bindings = <&macro_tap &kp F4 &kp N5>;
         };
 
         m_repeat: repeat_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_tap &kp F4 &kp 8>;
+            bindings = <&macro_tap &kp F4 &kp N8>;
         };
 
         m_with: with_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_tap &kp F4 &kp 0>;
+            bindings = <&macro_tap &kp F4 &kp N0>;
         };
 
         m_while: while_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_tap &kp F4 &kp 6>;
+            bindings = <&macro_tap &kp F4 &kp N6>;
         };
 
         m_reg: region_macro {
@@ -340,7 +340,7 @@
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
             &m_while   &m_with    &m_for     &m_if_else &m_if          &none      &none      &none      &none      &none          
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-            &none      &m_pt      &none      &m_nt      &none          &none      &none      &none      &none      &trans
+            &none      &m_nt      &none      &m_pt      &none          &none      &none      &none      &none      &trans
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
                                              &none      &none          &none      &none
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
