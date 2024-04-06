@@ -112,7 +112,7 @@
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&LPAR>, <&m_pb>;
+            bindings = <&kp LPAR>, <&m_pb>;
         };
 
         bd: backspace_delete {
@@ -194,9 +194,7 @@
         m_pb: macro_parenthesis_both {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings =  <&macro_tap &kp LPAR>,
-                        <&macro_tap &kp RPAR>,
-                        <&macro_tap &kp LARW>;
+            bindings =  <&macro_tap &kp LPAR &kp RPAR &kp LARW>;
         };
     };
 
