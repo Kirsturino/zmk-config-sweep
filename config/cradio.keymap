@@ -18,6 +18,7 @@
 #define L_GAME      7
 #define L_BUTTON    8
 #define L_POWER     9
+#define L_UNITY     10
 
 // Home rows
 #define HRML(k1,k2,k3,k4) &phrmt_l LGUI k1   &hrmt_l LALT  k2   &hrmt_l LCTRL k3   &hrmt_l  LSHFT k4
@@ -30,6 +31,10 @@
 #define LT_SYM      &lt     L_SYM       ENTER
 #define LT_BUT      &plt    L_BUTTON    Z
 #define LT_POWER    &plt    L_POWER     FSLH
+
+// Layer-toggles
+#define TOG_UNI     &tog L_UNITY
+#define TOG_GAME    &tog L_GAME
 
 // Other
 #define POW_TOG &ext_power EP_TOG
@@ -48,7 +53,7 @@
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <250>;
-            require-prior-idle-ms = <100>;
+            require-prior-idle-ms = <50>;
             hold-trigger-key-positions = <RIGHT_SIDE>;
             hold-trigger-on-release;
             bindings = <&kp>, <&kp>;
@@ -59,7 +64,7 @@
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <250>;
-            require-prior-idle-ms = <100>;
+            require-prior-idle-ms = <50>;
             hold-trigger-key-positions = <LEFT_SIDE>;
             hold-trigger-on-release;
             bindings = <&kp>, <&kp>;
@@ -70,7 +75,7 @@
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <160>;
-            require-prior-idle-ms = <100>;
+            require-prior-idle-ms = <50>;
             hold-trigger-key-positions = <RIGHT_SIDE>;
             hold-trigger-on-release;
             bindings = <&kp>, <&kp>;
@@ -81,7 +86,7 @@
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <160>;
-            require-prior-idle-ms = <100>;
+            require-prior-idle-ms = <50>;
             hold-trigger-key-positions = <LEFT_SIDE>;
             hold-trigger-on-release;
             bindings = <&kp>, <&kp>;
@@ -92,7 +97,7 @@
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <250>;
-            require-prior-idle-ms = <100>;
+            require-prior-idle-ms = <50>;
             bindings = <&mo>, <&kp>;
         };
 
@@ -189,6 +194,14 @@
             key-positions = <0 1>;
             bindings = <&kp ESC>;
         };
+
+        combo_tog_uni {
+            timeout-ms = <50>;
+            require-prior-idle-ms = <100>;
+            key-positions = <12 31>;
+            layers = <0 10>
+            bindings = <TOG_UNI>;
+        };
     };
 
     conditional_layers {
@@ -252,9 +265,9 @@
         layer_tri_settings {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-            &none      &none      &none      &none      &none         &tog L_GAME &none      &none      &none     &sys_reset
+            &none      &none      &none      &none      &none          TOG_GAME   &none      &none      &none      &sys_reset
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-            &kp LGUI   &kp LALT   &kp LCTRL  &kp LSHFT  &none          POW_TOG    &none      &none      &none     &bootloader
+            &kp LGUI   &kp LALT   &kp LCTRL  &kp LSHFT  &none          POW_TOG    &none      &none      &none      &bootloader
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
             &none      &none      &none      &none      &none         &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
@@ -308,13 +321,13 @@
         layer_game {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-            &kp TAB    &kp Q      &kp X      &kp E      &kp R         &tog L_GAME &kp N1     &kp N2     &kp N3     &kp N4
+            &kp TAB    &kp Q      &kp X      &kp E      &kp R          TOG_GAME   &kp N1     &kp N2     &kp N3     &kp N4
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
             &kp LSHFT  &kp A      &kp W      &kp D      &kp F          &none      &none      &none      &none      &none
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-            &kp LCTRL  &kp Z      &kp S      &kp C      &kp V          &none      &none      &none      &none      &none
+            &kp LALT   &kp Z      &kp S      &kp C      &kp V          &none      &none      &none      &none      &none
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                             &kp LALT   &kp SPACE      &none      &none
+                                             &kp LCTRL  &kp SPACE      &none      &none
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
@@ -343,6 +356,20 @@
             &none      &m_nt      &none      &m_pt      &none          &none      &none      &none      &none      &trans
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
                                              &none      &none          &none      &none
+        //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
+            >;
+        };
+
+        layer_unity {
+            bindings = <
+        //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
+            &kp TAB    &kp Q      &kp X      &kp E      &kp R          TOG_UNI    &kp E      &kp UARW   &kp R      &kp LS(U)
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+            &kp LSHFT  &kp A      &kp W      &kp D      &kp F          &kp G      &kp LARW   &kp DARW   &kp RARW   &kp LS(L)
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+            &kp LCTRL  &kp Z      &kp S      &kp C      &kp V          &kp LC(P)  &none      &none      &none      &kp LS(G)
+        //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
+                                             &kp LALT   &kp SPACE      &kp B      &kp K
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
