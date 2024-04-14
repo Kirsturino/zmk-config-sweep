@@ -47,6 +47,13 @@
     require-prior-idle-ms = <50>;
 };
 
+&mt {
+    tapping-term-ms = <200>;
+    quick-tap-ms = <200>;
+    require-prior-idle-ms = <50>;
+    flavor = "tap-preferred";
+}
+
 / {
     behaviors {
 
