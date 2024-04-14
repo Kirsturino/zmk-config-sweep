@@ -208,10 +208,18 @@
             bindings = <&kp ESC>;
         };
 
-        combo_tog_uni {
+        combo_tog_uni_left {
             timeout-ms = <50>;
             require-prior-idle-ms = <100>;
             key-positions = <12 31>;
+            layers = <0 10>;
+            bindings = <TOG_UNI>;
+        };
+
+        combo_tog_uni_right {
+            timeout-ms = <50>;
+            require-prior-idle-ms = <100>;
+            key-positions = <17 32>;
             layers = <0 10>;
             bindings = <TOG_UNI>;
         };
