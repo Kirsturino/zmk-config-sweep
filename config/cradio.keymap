@@ -44,10 +44,14 @@
 &lt {
     tapping-term-ms = <160>;
     quick-tap-ms = <200>;
+    require-prior-idle-ms = <50>;
 };
 
 / {
     behaviors {
+
+        // Hold-taps
+
         phrmt_l: pinkie_home_row_mod_tap_left {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -101,6 +105,18 @@
             bindings = <&mo>, <&kp>;
         };
 
+        bdlt: backspace_delete_layer_tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <160>;
+            require-prior-idle-ms = <50>;
+            quick-tap-ms = <200>;
+            bindings = <&mo>, <&bd>;
+        };
+
+        // Tap-dances
+
         tdc: tap_dance_caps {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
@@ -115,20 +131,13 @@
             bindings = <&kp LPAR>, <&m_pb>;
         };
 
+        // Mod-morphs
+
         bd: backspace_delete {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp BSPC>, <&kp DELETE>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        bdlt: backspace_delete_layer_tap {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <160>;
-            quick-tap-ms = <200>;
-            bindings = <&mo>, <&bd>;
         };
     };
 
