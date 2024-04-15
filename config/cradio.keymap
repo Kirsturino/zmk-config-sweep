@@ -48,7 +48,7 @@
 };
 
 &mt {
-    tapping-term-ms = <200>;
+    tapping-term-ms = <160>;
     quick-tap-ms = <200>;
     require-prior-idle-ms = <50>;
     flavor = "tap-preferred";
@@ -226,7 +226,7 @@
 
         combo_tog_uni_left {
             timeout-ms = <50>;
-            require-prior-idle-ms = <100>;
+            require-prior-idle-ms = <200>;
             key-positions = <12 31>;
             layers = <0 10>;
             bindings = <TOG_UNI>;
@@ -234,7 +234,7 @@
 
         combo_tog_uni_right {
             timeout-ms = <50>;
-            require-prior-idle-ms = <100>;
+            require-prior-idle-ms = <200>;
             key-positions = <17 32>;
             layers = <0 10>;
             bindings = <TOG_UNI>;
@@ -400,7 +400,7 @@
         layer_unity {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-            &kp TAB    &kp Q      &kp X      &kp E      &kp R          TOG_UNI    &kp E      &none      &kp R      &kp LS(U)
+            &kp TAB    &kp Q      &kp X      &kp E      &kp R          &none      &kp E      &none      &kp R      &kp LS(U)
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
             &kp LSHFT  &kp A      &kp W      &kp D      &kp F          &kp G      &kp LARW   &kp UARW   &kp RARW   &kp LS(L)
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
