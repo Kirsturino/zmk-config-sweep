@@ -33,11 +33,14 @@
 #define LT_POWER    &plt    L_POWER     FSLH
 
 // Layer-toggles
-#define TOG_UNI     &tog L_UNITY
+#define TO_UNI      &to  L_UNITY
+#define TO_BASE     &to  L_BASE
 #define TOG_GAME    &tog L_GAME
 
 // Other
 #define POW_TOG &ext_power EP_TOG
+
+//These seem to be broken right now, testing without macros for now 
 #define RIGHT_SIDE  5 6 7 8 9 15 16 17 18 19 25 26 27 28 29 32 33
 #define LEFT_SIDE   0 1 2 3 4 10 11 12 13 14 20 21 22 23 24 30 31
 
@@ -65,7 +68,7 @@
             flavor = "tap-preferred";
             tapping-term-ms = <250>;
             require-prior-idle-ms = <50>;
-            hold-trigger-key-positions = <RIGHT_SIDE>;
+            hold-trigger-key-positions = <5 6 7 8 9 15 16 17 18 19 25 26 27 28 29 32 33>;
             hold-trigger-on-release;
             bindings = <&kp>, <&kp>;
         };
@@ -76,7 +79,7 @@
             flavor = "tap-preferred";
             tapping-term-ms = <250>;
             require-prior-idle-ms = <50>;
-            hold-trigger-key-positions = <LEFT_SIDE>;
+            hold-trigger-key-positions = <0 1 2 3 4 10 11 12 13 14 20 21 22 23 24 30 31>;
             hold-trigger-on-release;
             bindings = <&kp>, <&kp>;
         };
@@ -87,7 +90,7 @@
             flavor = "tap-preferred";
             tapping-term-ms = <160>;
             require-prior-idle-ms = <50>;
-            hold-trigger-key-positions = <RIGHT_SIDE>;
+            hold-trigger-key-positions = <5 6 7 8 9 15 16 17 18 19 25 26 27 28 29 32 33>;
             hold-trigger-on-release;
             bindings = <&kp>, <&kp>;
         };
@@ -98,7 +101,7 @@
             flavor = "tap-preferred";
             tapping-term-ms = <160>;
             require-prior-idle-ms = <50>;
-            hold-trigger-key-positions = <LEFT_SIDE>;
+            hold-trigger-key-positions = <0 1 2 3 4 10 11 12 13 14 20 21 22 23 24 30 31>;
             hold-trigger-on-release;
             bindings = <&kp>, <&kp>;
         };
@@ -135,7 +138,7 @@
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp LPAR>, <&m_pb>;
+            bindings = <&kp LPAR>, <&m_pb>, <&m_pbml>, <&m_pbsc>;
         };
 
         // Mod-morphs
@@ -210,7 +213,19 @@
         m_pb: macro_parenthesis_both {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
+            bindings =  <&macro_tap &kp LPAR &kp RPAR>;
+        };
+
+        m_pbml: macro_parenthesis_both_move_left {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
             bindings =  <&macro_tap &kp LPAR &kp RPAR &kp LARW>;
+        };
+
+        m_pbsc: macro_parenthesis_both_semicolon {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =  <&macro_tap &kp LPAR &kp RPAR &kp SEMICOLON>;
         };
     };
 
@@ -224,20 +239,36 @@
             bindings = <&kp ESC>;
         };
 
-        combo_tog_uni_left {
+        combo_to_uni_left {
             timeout-ms = <50>;
             require-prior-idle-ms = <200>;
             key-positions = <12 31>;
             layers = <0 10>;
-            bindings = <TOG_UNI>;
+            bindings = <TO_UNI>;
         };
 
-        combo_tog_uni_right {
+        combo_to_base_left {
+            timeout-ms = <50>;
+            require-prior-idle-ms = <200>;
+            key-positions = <13 31>;
+            layers = <0 10>;
+            bindings = <TO_BASE>;
+        };
+
+        combo_to_uni_right {
             timeout-ms = <50>;
             require-prior-idle-ms = <200>;
             key-positions = <17 32>;
             layers = <0 10>;
-            bindings = <TOG_UNI>;
+            bindings = <TO_UNI>;
+        };
+
+        combo_to_base_right {
+            timeout-ms = <50>;
+            require-prior-idle-ms = <200>;
+            key-positions = <16 32>;
+            layers = <0 10>;
+            bindings = <TO_BASE>;
         };
     };
 
