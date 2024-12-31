@@ -21,8 +21,8 @@
 #define L_UNITY     10
 
 // Home rows
-#define HRML(k1,k2,k3,k4) &phrmt_l LGUI k1   &hrmt_l LALT  k2   &hrmt_l LCTRL k3   &hrmt_l  LSHFT k4
-#define HRMR(k1,k2,k3,k4) &hrmt_r RSHFT k1   &hrmt_r RCTRL k2   &hrmt_r LALT  k3   &phrmt_r RGUI  k4
+#define HRML(k1,k2,k3,k4) &phrmt_l LGUI k1   &rmhrmt_l LALT  k2   &rmhrmt_l LCTRL k3   &hrmt_l  LSHFT k4
+#define HRMR(k1,k2,k3,k4) &hrmt_r RSHFT k1   &rmhrmt_r RCTRL k2   &rmhrmt_r LALT  k3   &phrmt_r RGUI  k4
 
 // Layer-taps
 #define LT_MEDIA    &lt     L_MEDIA     TAB
@@ -64,8 +64,8 @@
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "tap-preferred";
-            tapping-term-ms = <250>;
-            require-prior-idle-ms = <50>;
+            tapping-term-ms = <400>;
+            require-prior-idle-ms = <300>;
             hold-trigger-key-positions = <RIGHT_SIDE>;
             hold-trigger-on-release;
             bindings = <&kp>, <&kp>;
@@ -75,9 +75,31 @@
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "tap-preferred";
-            tapping-term-ms = <250>;
-            require-prior-idle-ms = <50>;
+            tapping-term-ms = <400>;
+            require-prior-idle-ms = <300>;
             hold-trigger-key-positions = <LEFT_SIDE>;
+            hold-trigger-on-release;
+            bindings = <&kp>, <&kp>;
+        };
+
+        rmhrmt_r: ring_middle_home_row_mod_tap_right {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <300>;
+            require-prior-idle-ms = <200>;
+            hold-trigger-key-positions = <LEFT_SIDE>;
+            hold-trigger-on-release;
+            bindings = <&kp>, <&kp>;
+        };
+
+        rmhrmt_l: ring_middle_home_row_mod_tap_left {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <300>;
+            require-prior-idle-ms = <200>;
+            hold-trigger-key-positions = <RIGHT_SIDE>;
             hold-trigger-on-release;
             bindings = <&kp>, <&kp>;
         };
